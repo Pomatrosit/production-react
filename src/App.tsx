@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import AboutPageAsync from "./pages/AboutPage/AboutPageAsync";
 import MainPageAsync from "./pages/MainPage/MainPageAsync";
 import { Suspense } from "react";
+import useTheme from "./theme/useTheme";
 
 const App = () => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
+      <button onClick={toggleTheme}>Toggle theme</button>
       <Link to="/">Main Page</Link>
       <Link to="/about">About Page</Link>
       <Suspense fallback={<div>Loading ...</div>}>
